@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/canvas.css">
+    <script src="assets/js/canvas.js"></script>
+    <script>
+        //Анонімна функція, приєднана до події window.onload, 
+        //буде виконуватися при завантаженні сторінки.
+
+        window.onload = function() {
+            canvas('#draw', {
+                width: 500,
+                height: 300,
+                strokeWidth: 5,
+                strokeColor: "#df4b26"
+            })
+        };
+    </script>
+
+</head>
+<body>
+<header class="header"><img src="assets/img/logo.png" alt="logo" height="60" width=""></header>
+<div class="container">
+    <main class="center column">
+        <canvas id="draw"></canvas>
+        <div class="toolbar" id="toolbar">
+            Brush color:
+            <input type="color" id="color-picker" />
+<!--            <input type="text" id="colorInputText">-->
+<!--            <button class="btn">Clear1</button>-->
+        </div>
+
+
+    </main>
+    <nav class="left column">
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="slider.html">Slider</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Index</a></li>
+            <li></li>
+        </ul>
+
+    </nav>
+    <div class="right column">
+    
+    </div>
+    <div class="push">wut</div>
+</div>
+<div class="footer-wrapper">
+    <footer class="footer">
+        <img src="assets/img/plane.jpg" height="40" alt="plane_image">
+    </footer>
+</div>
+</body>
+</html>
+</title>
+</head>
+<body>
+</body>
+</html>

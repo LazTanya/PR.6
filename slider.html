@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Slider</title>
+   <link rel="stylesheet" href="assets/css/layout.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+   <script src="assets/js/script.js"></script>
+
+   <script>
+       //Событие load на объекте window наступает, 
+       //когда загрузилась вся страница, включая стили, картинки и другие ресурсы.
+
+    window.onload = function() {
+        // ви можете зробити скільки завгодно слайдів
+        let slides = [
+            {
+                title: "Nature",
+                background: "assets/img/1.png",
+                link: "https://pixabay.com/ru/photos/%D0%BF%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B0-%D0%B2%D0%BE%D0%B4%D1%8B-%D0%BE%D0%B7%D0%B5%D1%80%D0%BE-%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B2-%D0%BF%D0%B5%D0%B9%D0%B7%D0%B0%D0%B6-3082832/"
+            }, {
+                title: "Sky",
+                background: "assets/img/2.png",
+                link: "https://metro.fandom.com/ru/wiki/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD"
+            }, {
+                title: "Water",
+                background: "assets/img/3.png",
+                link: "https://funart.pro/20639-glubokij-okean-60-foto.html"
+            }
+        ]
+        Slider.initSlider(slides);
+    };
+ </script>
+
+
+</head>
+<body>
+<header class="header"><p><img src="assets/img/logo.png" height="40px"></p></header>
+<div class="container">
+   <main class="center column">
+       <article>
+           <h1>Slider</h1>
+           <p></p>
+           <div id="slider"></div>
+
+           <div id="slider-indexes"></div>
+
+           <div id = "rrr">
+            <input id="butt1" class="buttons" type="button" value="Prev"/>
+            <input id="butt2" class="buttons" type="button" value="Next"/>
+            <input id="butt3" class="buttons" type="button" value="Hide"/>
+            <input id="butt4" class="buttons" type="button" value="Start"/>
+
+        </div>
+
+           <script>
+            index = 0;
+
+            function handler1() {
+                Slider.prevSlide();
+            }
+            function handler2() {
+                Slider.nextSlide();
+            }
+            function handler3(){
+                if (index % 2 == 0) {
+                    document.getElementById("slider").style.display = "none";
+                    butt3.value = "Show";
+                }
+                else {
+                    document.getElementById("slider").style.display = 'block';
+                    butt3.value = "Hide";
+                }
+                index++;
+            }
+
+
+            //метод addEventListener() присоединяет обработчик события 
+            //к определенному элементу. При этом новый обработчик события 
+            //не переписывает уже существующие обработчики событий.
+
+            //элемент.addEventListener(событие, функция, useCapture); 
+
+            butt1.addEventListener("click", handler1);
+            butt2.addEventListener("click", handler2);
+            butt3.addEventListener("click", handler3);
+            butt4.addEventListener('click', (event)=>{
+                if (event.target.classList.contains('start')){
+                    event.target.innerHTML = 'Stop';
+                    butt4.value = 'Start';
+                    clearInterval(interval)
+                } else {
+                    event.target.innerHTML = 'Start';
+                    butt4.value = 'Stop';
+                    interval = setInterval(()=>{
+                        Slider.nextSlide();
+                    },1000)
+                }
+                event.target.classList.toggle('start')
+            })
+
+        </script>
+       </article>
+   </main>
+   <nav class="left column">
+       <h3>Left heading</h3>
+       <ul>
+        <li><a href="about.html">about</a></li>
+        <li><a href="contact.html">contact</a></li>
+        <li><a href="media.html">media</a></li>
+        <li><a href="index.html">index</a></li>
+        <li><a href="table.html">tabel</a></li>
+        <li><a href="canvas.html">canvas</a></li>
+    </ul>
+       <ul>
+           <li><a href="#">Link 1</a></li>
+       </ul>
+       <h3>Left heading</h3>
+       <ul>
+           <li><a href="#">Link 1</a></li>
+       </ul>
+   </nav>
+   <div class="right column">
+       <h3>Right heading</h3>
+       <p></p>
+   </div>
+   <div class="push"></div>
+</div>
+<div class="footer-wrapper">
+   <footer class="footer"><p>Footer...</p></footer>
+</div>
+</body>
+</html>
